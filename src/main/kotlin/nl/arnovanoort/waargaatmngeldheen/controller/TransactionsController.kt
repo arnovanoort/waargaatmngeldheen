@@ -51,19 +51,8 @@ class CsvController(
 
     @GetMapping("/transactions")
     fun getTransactions(): Transactions {
-        return testTransaction
-    }
-
-    companion object TestObject{
-        val testTransaction = Transactions(listOf(
-            Transaction(
-                UUID.randomUUID(),
-                LocalDate.parse("2022-08-31"),
-            "Description",
-            10.50f,
-            "Contactloos"
-            )
-        ))
+        val retrievedTransactions: List<Transaction> = transactionRepository.findAll();
+        return Transactions(retrievedTransactions)
     }
 }
 

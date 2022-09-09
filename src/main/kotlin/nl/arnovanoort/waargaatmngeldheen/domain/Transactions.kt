@@ -1,5 +1,6 @@
 package nl.arnovanoort.waargaatmngeldheen.domain
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.opencsv.bean.CsvBindByPosition
 import com.opencsv.bean.CsvDate
 import org.springframework.data.annotation.Id
@@ -8,7 +9,9 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
 
+
 data class Transactions (
+    @JsonProperty("transactions")
     val transactions: List<Transaction>
 )
 @Document

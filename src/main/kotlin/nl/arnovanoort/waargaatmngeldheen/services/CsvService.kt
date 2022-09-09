@@ -28,7 +28,6 @@ class CsvService {
         CsvToBeanBuilder<Transaction>(fileReader)
             .withType(Transaction::class.java)
             .withSeparator(';')
-//            .withSkipLines(1)
             .withIgnoreLeadingWhiteSpace(true)
             .build()
 
@@ -56,6 +55,7 @@ class CsvService {
             val csvToBean = createCSVToBean(fileReader)
             return csvToBean.parse()
         } catch (ex: Exception) {
+            ex.printStackTrace()
             throw CsvImportException("Error during csv import")
         } finally {
             closeFileReader(fileReader)
